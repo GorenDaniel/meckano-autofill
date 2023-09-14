@@ -33,8 +33,8 @@ function getNonRestDays() {
 function getMissingDays(nonRestDays) {
   return Array.from(nonRestDays)
     .filter(tr => tr.querySelector('.missing').innerText === '+')
-    .filter(tr => !tr.querySelector('.specialDayDescription'))
-    .filter(tr => !tr.querySelector('p').innerText.includes('ה'))
+    .filter(tr => !tr.querySelector('.specialDayDescription').textContent.length)
+    .filter(tr => !tr.querySelector('p').innerText.match(/ ה$/))
 }
 
 async function submitHours(day) {
