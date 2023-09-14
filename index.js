@@ -31,7 +31,15 @@ function getNonRestDays() {
 }
 
 function getMissingDays(nonRestDays) {
-  return Array.from(nonRestDays).filter(tr => tr.querySelector('.missing').innerText === '+')
+  return (
+    Array.from(nonRestDays)
+      // find missing days
+      .filter(tr => tr.querySelector('.missing').innerText === '+')
+      // filter out holidays
+      .filter(tr => !tr.querySelector('.specialDayDescription'))
+      // filter out Thursdays
+      .filter(tr => !tr.querySelector('p').innerText.includes('ה'))
+  )
 }
 
 async function submitHours(day) {
