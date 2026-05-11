@@ -1,0 +1,5 @@
+agents:
+  enabled:
+    - foundation-reviewer
+    - goren-style-reviewer
+    - security-auditor
